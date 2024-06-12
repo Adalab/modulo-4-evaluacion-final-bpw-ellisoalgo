@@ -38,12 +38,10 @@ This is a back-end project that provides a RESTful API to manage a database of P
 ## Dependencies
 
 - Express
-- Mongoose
 - JWT (jsonwebtoken)
 - bcrypt
 - dotenv
-- Body-parser
-- Morgan
+- cors
 
 ## API Endpoints
 
