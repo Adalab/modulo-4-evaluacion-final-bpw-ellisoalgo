@@ -68,7 +68,7 @@ server.get("/pokemon/:id", async (req, res)=>{
     };
 });
 //add new
-server.post("/pokemon", async (req, res)=>{
+server.post("/pokemon/addnew", async (req, res)=>{
     try {
         const conn = await getConnection();
         const {name, photo, type, height, weight} = req.body;
@@ -93,7 +93,7 @@ server.post("/pokemon", async (req, res)=>{
     }
 });
 //edit by id
-server.put('/pokemon/:id', async (req, res)=>{
+server.put('/pokemon/update/:id', async (req, res)=>{
     try {
         const conn = await getConnection();
         const {id} = req.params;
@@ -122,7 +122,7 @@ server.put('/pokemon/:id', async (req, res)=>{
     }
 });
 //delete by id
-server.delete('/pokemon/:id', async (req, res) => {
+server.delete('/pokemon/delete/:id', async (req, res) => {
     try {
         const conn = await getConnection();
         const { id } = req.params;
