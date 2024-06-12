@@ -3,18 +3,19 @@
 This is a back-end project that provides a RESTful API to manage a database of Pokemon. Users can consult, add, modify, and delete Pokemon entries. Additionally, users can create accounts, log in, and log out.
 
 ## Table of Contents
-- [Installation](#installation)
-- [Dependencies](#dependencies)
-- [API Endpoints](#api-endpoints)
-  - [Get All Pokemon](#get-all-pokemon)
-  - [Get Pokemon by ID](#get-pokemon-by-id)
-  - [Add a New Pokemon](#add-a-new-pokemon)
-  - [Update a Pokemon](#update-a-pokemon)
-  - [Delete a Pokemon](#delete-a-pokemon)
-  - [Register new User](#create-a-user)
-  - [Log In](#log-in)
-  - [Log Out](#log-out)
-- [Examples](#examples)
+- Installation
+- Dependencies
+- API Endpoints
+  - Get All Pokemon
+  - Get Pokemon by ID
+  - Add a New Pokemon
+  - Update a Pokemon
+  - Delete a Pokemon
+  - Register new User
+  - Log In
+  - Log Out
+- Examples
+
 
 ## Installation
 
@@ -60,7 +61,8 @@ This is a back-end project that provides a RESTful API to manage a database of P
 - **Method:** `POST`
 - **Description:** Add a new Pokemon to the database.
 - **Request Body:**
-  ```json
+```json
+
   {
     "name": "string",
     "photo": "string",
@@ -68,13 +70,13 @@ This is a back-end project that provides a RESTful API to manage a database of P
     "weight": "number",
     "height": "number"
   }
-
+```
 ### Update a Pokemon
 - **Endpoint:** `/pokemon/update/:id`
 - **Method:** `PUT`
 - **Description:** Update an existing Pokemon by its ID.
 - **Request Body:**
-    ```json
+```json
   {
     "name": "string",
     "photo": "string",
@@ -82,6 +84,7 @@ This is a back-end project that provides a RESTful API to manage a database of P
     "weight": "number",
     "height": "number"
   }
+```
 
 ### Delete Pokemon
 - **Endpoint:** `/pokemon/delete/:id`
@@ -94,12 +97,13 @@ This is a back-end project that provides a RESTful API to manage a database of P
 - **Description:** Create a new user account with encrypted password.
 - **Request Body:**
     ```json
-  {
+ {
     "email": "string",
     "name": "string",
     "address": "string",
     "password": "string"
   }
+```
 
 ### Log In
 - **Endpoint:** `/login`
@@ -107,10 +111,11 @@ This is a back-end project that provides a RESTful API to manage a database of P
 - **Description:** Log in to an existing user account.
 - **Request Body:**
     ```json
-    {
+{
         "email": "string",
         "password": "string"
     }
+```
 
 ### Log Out
 - **Endpoint:** `/logout`
@@ -120,26 +125,28 @@ This is a back-end project that provides a RESTful API to manage a database of P
 ## Examples
 ### Fetch Examples
 **Get All Pokemon**
-    ```json
-    {
-        fetch('/pokemon')
-        .then(response => response.json())
-        .then(data => console.log(data))
-        .catch(error => console.error('Error:', error));
-    }
+ ```javascript
+   {
+            fetch('/pokemon')
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
+        }
+```
 
 **Get Pokemon by ID**
-    ```json
-    {
+   ```javascript
+ {
         fetch('/pokemon/1')
         .then(response => response.json())
         .then(data => console.log(data))
         .catch(error => console.error('Error:', error));
     }
+```
 
 **Add a New Pokemon**
-    ```json
-    {
+```javascript
+ {
         fetch('/pokemon/addnew', {
             method: 'POST',
             headers: {
@@ -157,10 +164,12 @@ This is a back-end project that provides a RESTful API to manage a database of P
         .then(data => console.log(data))
         .catch(error => console.error('Error:', error));
     }
+```
 
 **Update a Pokemon**
-    ```json
-    {
+  
+  ```javascript
+  {
         fetch('/pokemon/update/1', {
             method: 'PUT',
             headers: {
@@ -178,10 +187,11 @@ This is a back-end project that provides a RESTful API to manage a database of P
         .then(data => console.log(data))
         .catch(error => console.error('Error:', error));
     }
+```
 
 **Delete a Pokemon**
-    ```json
-    {
+   ```javascript
+ {
         fetch('/pokemon/delete/1', {
             method: 'DELETE'
         })
@@ -189,10 +199,11 @@ This is a back-end project that provides a RESTful API to manage a database of P
         .then(data => console.log(data))
         .catch(error => console.error('Error:', error));
     }
-
+```
 **Register New User**
-    ```json
-    {
+
+ ```javascript
+   {
         fetch('/users', {
             method: 'POST',
             headers: {
@@ -209,10 +220,11 @@ This is a back-end project that provides a RESTful API to manage a database of P
         .then(data => console.log(data))
         .catch(error => console.error('Error:', error));
     }
+```
 
 **Log in**
-    ```json
-    {
+   ```javascript
+ {
         fetch('login', {
             method: 'POST',
             headers: {
@@ -227,10 +239,11 @@ This is a back-end project that provides a RESTful API to manage a database of P
         .then(data => console.log(data))
         .catch(error => console.error('Error:', error));
     }
+```
 
 **Log out**
-    ```json
-    {
+  ```javascript
+  {
         fetch('/logout', {
             method: 'POST'
         })
@@ -238,3 +251,4 @@ This is a back-end project that provides a RESTful API to manage a database of P
         .then(data => console.log(data))
         .catch(error => console.error('Error:', error));
     }
+```
