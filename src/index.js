@@ -144,6 +144,8 @@ server.delete('/pokemon/delete/:id', async (req, res) => {
 
 //endpoints table: users
 //register new user
+
+
 server.post('/signup', async (req, res) => {
     let conn;
     try {
@@ -155,7 +157,7 @@ server.post('/signup', async (req, res) => {
 
         if (emailResult.length === 0) {
             const hashedPassword = await bcrypt.hash(password, 10);
-            const insertUser = 'INSERT INTO users (email, name, address, password) VALUES (?, ?, ?, ?)';
+            const insertUser = 'INSERT INTO users (email, name, address, hashed_password) VALUES (?, ?, ?, ?)';
             const [newUser] = await conn.query(insertUser, [email, name, address, hashedPassword]);
             res.status(201).json({ success: true, id: newUser.insertId });
         } else {
