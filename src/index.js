@@ -210,25 +210,26 @@ server.post('/login', async (req, res) => {
         if (conn) await conn.end();
     }
 });
+
 function authorize(req, res, next) {
     const tokenString = req.headers.authorization;
     if (!tokenString) {
         res.status(400).json({ 
             success: false, 
-            message: 'Unauthorized' 
+            message: 'Unauthorized: No token provided' 
         });
     } else {
         try {
             const token = tokenString.split(' ')[1];
             const verifiedToken = jwt.verify(token, 'passcode');
             req.userInfo = verifiedToken;
+            next();
         } catch (error) {
             res.status(400).json({ 
                 success: false, 
-                message: error 
+                message: "Unauthorized: Invalid token", 
             });
         }
-        next();
     }
 };
 server.get('/profile', authorize, async (req, res) => {
@@ -237,7 +238,7 @@ server.get('/profile', authorize, async (req, res) => {
         const userSql = 'SELECT * FROM users';
         const [result] = await conn.query(userSql);
         res.status(200).json({ 
-            succes: true, 
+            success: true, 
             data: result 
         });
         conn.end();
